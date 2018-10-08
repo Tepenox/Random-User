@@ -21,9 +21,13 @@ body {
 img {
     width: 150px;
     height: 150px;
-    background-color: grey;
+    /* background-color: grey; */
     border-radius: 100%;
     margin-top: 15px;
+    transition: background-image 0.5s;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
 }
 
 h1 {
@@ -73,6 +77,8 @@ button {
     margin-bottom: 100px;
     border-bottom-left-radius: 10%;
     border-bottom-right-radius: 10%;
+    color: white;
+    font-size: 25px;
     background-color: #16a085;
 }
 

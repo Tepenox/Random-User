@@ -30,7 +30,7 @@ function findNewUser() {
             usernameDisp.textContent = data.login.username;
             emailDisp.textContent = data.email;
             cityDisp.textContent = data.location.city;
-            img.src = data.picture.large;
+            img.style.backgroundImage = "url(" + data.picture.large +")";
 
         }).catch(function (error) {
             console.log(error);
