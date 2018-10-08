@@ -1,22 +1,41 @@
-var img = document.querySelector("#img");
-var name = document.querySelector("#name");
-var username = document.querySelector("#username");
-var email = document.querySelector("#email");
-var city = document.querySelector("#city");
+var img = document.querySelector("img");
+var fullNameDisp = document.querySelector("#name");
+var usernameDisp = document.querySelector("#username");
+var emailDisp = document.querySelector("#email");
+var cityDisp = document.querySelector("#city");
 var btn = document.querySelector("button");
 
 
 var url = "https://randomuser.me/api/";
 
-fetch(url)
-    .then(handleErrors)
-    .then(function (request) {
-        return request.json()
-    })
-    .then(function (request) {
-        console.log(request);
-    })
+findNewUser();
 
+
+btn.addEventListener("click", function () {
+    findNewUser();
+})
+
+
+function findNewUser() {
+
+    fetch(url)
+        .then(handleErrors)
+        .then(function (request) {
+            return request.json()
+        })
+        .then(function (request) {
+            var data = request.results[0];
+
+            fullNameDisp.textContent = data.name.first + " " + data.name.last;
+            usernameDisp.textContent = data.login.username;
+            emailDisp.textContent = data.email;
+            cityDisp.textContent = data.location.city;
+            img.src = data.picture.large;
+
+        }).catch(function (error) {
+            console.log(error);
+        });
+}
 
 function handleErrors(request) {
 
